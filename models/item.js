@@ -6,6 +6,6 @@ const ItemSchema = new mongoose.Schema({
 	measurement: String
 });
 
-const Ingredient = mongoose.model('Ingredient', ItemSchema);
+const Item = mongoose.model('Item', ItemSchema);
 
- module.exports = Ingredient;
+ module.exports = Item;

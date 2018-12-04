@@ -18,7 +18,9 @@ app.use(session({
   saveUninitialized: false // legal
 }));
 
-app.use(bodyParser.urlencoded({extended: false}));
+//Doesn't hurt, but isn't necessary because I'm not sending forms
+
+//app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 const corsOptions = {
@@ -31,12 +33,18 @@ app.use(cors(corsOptions));
 
 //Controllers
 const authController 	 = require('./controllers/authController.js');
-const userController 	 = require('./controllers/userController.js');
+const recipeController 	 = require('./controllers/recipeController.js');
+const listController 	 = require('./controllers/listController.js');
+const ingredientController 	 = require('./controllers/ingredientController.js');
+
 
 
 //Use controllers
 app.use('/auth', authController);
-app.use('/user', userController);
+// app.use('/user', userController);
+app.use('/recipe', recipeController);
+
+//Inside here is /search and /random
 
 
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const unirest = require('unirest');
-const Ingredients = require('../models/ingredient');
+const Item = require('../models/item');
 const User = require('../models/user');
 const TripList = require('../models/tripList');
 
@@ -51,11 +51,11 @@ router.delete('/:id', async (req, res, next) => {
 		
 })
 
-//Complete Current game
+//Complete Current List - CREATE grocery list
 router.post('/', async (req, res, next) => {
 		try {
 		const findUser = await User.findOne({username: req.session.username});
-		const createItems = await 
+		//const createItems = await 
 		//Need to take every item in the box and push each one to an array
 		const createTrip = await TripList.create({
 			tripName: req.body.title,
@@ -72,11 +72,13 @@ router.post('/', async (req, res, next) => {
 /*********Recipe API*******/
 //Recipe Search - main
 //Add route
-unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=25&query=" + req.body)
-.header("X-RapidAPI-Key", "hh5O4dgFV6msheOffoqu2Fj07cXDp1d6hTJjsn4rCIl78QdEiD")
-.end(function (result) {
-  console.log(result.status, result.headers, result.body);
-});
+router.get('/', async (req, res) => {
+	unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=25&query=" + req.body)
+	.header("X-RapidAPI-Key", "hh5O4dgFV6msheOffoqu2Fj07cXDp1d6hTJjsn4rCIl78QdEiD")
+	.end(function (result) {
+	  console.log(result.status, result.headers, result.body);
+	});		
+})
 
 
 module.exports = router;
