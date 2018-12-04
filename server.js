@@ -43,6 +43,7 @@ const ingredientController 	 = require('./controllers/ingredientController.js');
 app.use('/auth', authController);
 // app.use('/user', userController);
 app.use('/recipe', recipeController);
+app.use('/current', listController);
 
 //Inside here is /search and /random
 

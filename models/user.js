@@ -1,6 +1,6 @@
 const mongoose = require ('mongoose');
 const TripList = require('./tripList');
-const Recipe = require('./Recipe');
+const Recipe = require('./recipe');
 
 const UserSchema = new mongoose.Schema({
 	username: {type: String, required: true},
