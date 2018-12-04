@@ -17,19 +17,21 @@ router.get('/random', async (req, res) => {
 	})
 })
 
+/*********Recipe API*******/
 //Recipe Search - main
-router.post('/search', async (req, res) => {
-	unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=25&query=" + req.body)
+router.get('/search', async (req, res) => {
+	console.log(req.query, "req.query");
+	unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=25&query=" + req.query.query)
 	.header("X-RapidAPI-Key", "hh5O4dgFV6msheOffoqu2Fj07cXDp1d6hTJjsn4rCIl78QdEiD")
 	.end((results) => {
-		res.json({
-			status: 200,
-			data: results,
-			session: req.session
-		})
-	})
+	  res.json({
+	  	status: 200,
+	  	data: results,
+	  	session: req.session
+	  })
+	});		
 })
 
-//
+
 
 module.exports = router; 
