@@ -33,4 +33,4 @@ unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes
 
 //
 
-module.exports = unirest; 
+module.exports = router; 

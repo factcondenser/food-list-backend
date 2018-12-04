@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const unirest = require('unirest');
 const Ingredients = require('../models/ingredient');
 const User = require('../models/user');
 const TripList = require('../models/tripList');
@@ -71,6 +71,7 @@ router.post('/', async (req, res, next) => {
 
 /*********Recipe API*******/
 //Recipe Search - main
+//Add route
 unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=25&query=" + req.body)
 .header("X-RapidAPI-Key", "hh5O4dgFV6msheOffoqu2Fj07cXDp1d6hTJjsn4rCIl78QdEiD")
 .end(function (result) {
@@ -78,4 +79,4 @@ unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes
 });
 
 
-
+module.exports = router;
