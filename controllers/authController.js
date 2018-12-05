@@ -69,6 +69,7 @@ router.post('/login', async (req, res, next) => {
 			}//end of else statement
 		} catch(e){
 			next(e)
+			console.log("Login error");
 		}	
 });
 
