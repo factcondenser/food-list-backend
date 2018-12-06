@@ -153,6 +153,20 @@ router.post('/', async (req, res, next) => {
 // }
 // ]
 
+//GET recipe info - this is for accessing recipe and placing data the temp recipe container:
+router.get('/ingredients', async (req, res) => {
+	unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + req.query + "/information")
+	.header("X-RapidAPI-Key", "hh5O4dgFV6msheOffoqu2Fj07cXDp1d6hTJjsn4rCIl78QdEiD")
+	.end((result) => {
+ 	res.json({
+			status: 200,
+			data: result,
+			session: req.session
+		})
+	});
+});
+
+
 
 //PAST list
 router.get('/past/:trip', async (req, res) => {
