@@ -77,7 +77,7 @@ router.post('/login', async (req, res, next) => {
 
 //Logout Route
 router.get('/logout', (req, res) => {
-	req.session.destroy(() => {
+	req.session.destroy((error) => {
 		if(error){
 			res.json({
 				status: 400,
