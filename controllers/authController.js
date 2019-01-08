@@ -26,6 +26,8 @@ router.post('/register', async (req, res, next) => {
 			userEntry.password = passwordHash;
 			const createUser = await User.create(userEntry);
 			await createUser.save();
+			req.session.loggedIn = true;
+			req.session.username = userEntry.username;
 			res.json({
 				status: 201,
 				data: 'Registration successful',
