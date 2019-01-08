@@ -29,9 +29,20 @@ router.get('/search', async (req, res) => {
 	  	data: results,
 	  	session: req.session
 	  })
-	});		
+	});
 })
 
+//Recipe Get
+router.get('/:id', async (req, res) => {
+	unirest.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/' + req.params.id + '/information')
+	.header("X-RapidAPI-Key", "hh5O4dgFV6msheOffoqu2Fj07cXDp1d6hTJjsn4rCIl78QdEiD")
+	.end((results) => {
+	  res.json({
+			status: 200,
+			data: results,
+			session: req.session
+	  })
+	});
+})
 
-
-module.exports = router; 
+module.exports = router;
